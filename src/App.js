@@ -1,4 +1,4 @@
-import { Navbar, Timer, Todo } from './components/index.js'
+import { Navbar, Todo } from './components/index.js'
 
 function App() {
   return (
@@ -8,7 +8,6 @@ function App() {
       </div>
       <div className='TodoList'>
         <Todo />
-        <Timer />
       </div>
     </div >
   );
