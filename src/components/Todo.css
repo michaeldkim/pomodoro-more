@@ -4,7 +4,6 @@
   justify-content: center;
   align-items: center;
   background-color: blue;
-
 }
 
 .todo-header {
@@ -29,15 +28,28 @@
 }
 
 .todo-tasklist {
-  background-color: green;
   width: 100%;
 }
 
 .todo-tasklist li {
   background: white;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin: 10px 0;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.todo-task-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-task-head span {
+  padding: 0 0.5vh;
+  width:100%;
 }
 
 .completed {

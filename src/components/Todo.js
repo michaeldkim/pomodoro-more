@@ -5,6 +5,7 @@ function Todo() {
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState('');
     const [dateTime, setDateTime] = useState(new Date());
+    const [expandedTaskIndex, setExpandedTaskIndex] = useState(-1);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -44,6 +45,10 @@ function Todo() {
         setTasks(updatedTasks);
     };
 
+    const toggleExpandTask = (index) => {
+        setExpandedTaskIndex(index === expandedTaskIndex ? -1 : index);
+    };
+
     return (
         <div className='todo-body'>
             <div className='todo-header'>
@@ -67,13 +72,20 @@ function Todo() {
                     <ul>
                         {tasks.map((task, index) => (
                             <li key={index} className={task.completed ? 'completed' : ''}>
-                                <input
-                                    type="checkbox"
-                                    checked={task.completed}
-                                    onChange={() => toggleCompleted(index)}
-                                />
-                                <span>{task.text}</span>
-                                <button onClick={() => removeTask(index)}>X</button>
+                                <div className='todo-task-head'>
+                                    <input
+                                        type="checkbox"
+                                        checked={task.completed}
+                                        onChange={() => toggleCompleted(index)}
+                                    />
+                                    <span onClick={() => toggleExpandTask(index)}>{task.text}</span>
+                                    <button onClick={() => removeTask(index)}>X</button>
+                                </div>
+                                {expandedTaskIndex === index && (
+                                    <div className="expanded-content">
+                                        Expanded
+                                    </div>
+                                )}
                             </li>
                         ))}
                     </ul>
