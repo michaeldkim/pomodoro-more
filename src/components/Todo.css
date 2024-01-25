@@ -11,16 +11,35 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
+  width: 80%;
   background-color: yellow;
-  margin: 1vh 1vh 0vh 1vh;
-  padding: 1vh 1vh 0vh 1vh;
-  height: 10vh;
-  
+  margin: 1vh;
+  padding: 1vh;
+}
+
+.todo-header button {
+  margin: 0 5px;
 }
 
 .todo-divider {
   background-color: black;
   height: 5px;
   width: 100%;
+}
+
+.todo-tasklist {
+  background-color: green;
+  width: 100%;
+}
+
+.todo-tasklist li {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.completed {
+  opacity: 0.35;
 }
