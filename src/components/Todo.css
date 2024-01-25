@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: blue;
 }
 
 .todo-header {
@@ -12,9 +11,14 @@
   justify-content: space-around;
   align-items: flex-start;
   width: 80%;
-  background-color: yellow;
   margin: 1vh;
   padding: 1vh;
+}
+
+.todo-header h1{
+  font-size: 25px;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .todo-header button {
@@ -23,8 +27,9 @@
 
 .todo-divider {
   background-color: black;
-  height: 5px;
+  height: 2px;
   width: 100%;
+  margin: 10px 0;
 }
 
 .todo-tasklist {
@@ -36,10 +41,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 10px 0;
   padding: 10px;
-  border: 1px solid black;
-  border-radius: 5px;
+  margin-bottom: 1px;
+  /*border: 1px solid black;
+  border-radius: 5px;*/
+}
+
+.todo-tasklist ul {
+  background-color: lightgrey;
 }
 
 .todo-task-head {
@@ -49,7 +58,12 @@
 
 .todo-task-head span {
   padding: 0 0.5vh;
-  width:100%;
+  width: 100%;
+}
+
+.todo-addtask input {
+  padding-left: 5px;
+  outline: none;
 }
 
 .completed {

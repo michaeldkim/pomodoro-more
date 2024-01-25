@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import './Todo.css'
+import './Todo.css';
+import Task from './Task';
 
 function Todo() {
     const [tasks, setTasks] = useState([]);
@@ -17,9 +18,11 @@ function Todo() {
     }, []);
 
     const formattedDate = dateTime.toLocaleDateString('en-US', {
+        weekday: 'long',
         month: '2-digit',
         day: '2-digit',
     });
+
     const formattedTime = dateTime.toLocaleTimeString('en-US', {
         hour: '2-digit',
         minute: '2-digit',
@@ -28,7 +31,8 @@ function Todo() {
 
     const addTask = () => {
         if (newTask.trim() !== '') {
-            setTasks([...tasks, { text: newTask, completed: false }]);
+            const capitalizedTask = newTask.charAt(0).toUpperCase() + newTask.slice(1);
+            setTasks([...tasks, { text: capitalizedTask, completed: false }]);
             setNewTask('');
         }
     };
@@ -83,7 +87,7 @@ function Todo() {
                                 </div>
                                 {expandedTaskIndex === index && (
                                     <div className="expanded-content">
-                                        Expanded
+                                        <Task taskData={task}/>
                                     </div>
                                 )}
                             </li>
