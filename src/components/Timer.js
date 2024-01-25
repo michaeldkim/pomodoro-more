@@ -1,5 +1,6 @@
 // Timer.js
 import React, { useState, useEffect } from 'react';
+import './Timer.css'
 
 const Timer = () => {
     const initialMinutes = 25;
@@ -39,10 +40,10 @@ const Timer = () => {
 
     return (
         <div className='flex-col'>
-            <div className='flex justify-center'>
-                <p>{`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</p>
+            <div className='flex justify-center bg-white text-black text-5xl'>
+                <p className="bg-inherit text-black">{`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</p>
             </div>
-            <div className='space-x-2'>
+            <div className='space-x-2 bg-white text-black'>
                 <button onClick={toggleTimer}>
                     {isActive ? 'Pause' : 'Start'}
                 </button>

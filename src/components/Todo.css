@@ -1,0 +1,26 @@
+.todo-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+
+}
+
+.todo-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: yellow;
+  margin: 1vh 1vh 0vh 1vh;
+  padding: 1vh 1vh 0vh 1vh;
+  height: 10vh;
+  
+}
+
+.todo-divider {
+  background-color: black;
+  height: 5px;
+  width: 100%;
+}

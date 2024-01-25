@@ -7,6 +7,7 @@ function App() {
         <Navbar />
       </div>
       <div className='TodoList'>
+        
         <Todo />
       </div>
     </div >

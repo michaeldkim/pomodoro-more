@@ -1,10 +1,8 @@
-// Todo.js
 import React, { useState } from 'react';
-import Timer from './Timer';
+import './Todo.css'
 
 function Todo() {
     const [tasks, setTasks] = useState([]);
-    const [completedTasks, setCompletedTasks] = useState([]);
     const [newTask, setNewTask] = useState('');
 
     const addTask = () => {
@@ -15,54 +13,37 @@ function Todo() {
     };
 
     const removeTask = (index) => {
-        const completedTask = {
-            ...tasks[index],
-            completed: true,
-        };
-
-        setCompletedTasks((prevCompletedTasks) => [...prevCompletedTasks, completedTask]);
-
-        setTasks((prevTasks) => {
-            const updatedTasks = [...prevTasks];
-            updatedTasks.splice(index, 1);
-            return updatedTasks;
-        });
+        const updatedTasks = [...tasks];
+        updatedTasks.splice(index, 1);
+        setTasks(updatedTasks);
     };
 
     return (
-        <div className="container mx-auto p-4">
-            <div className='container'>
-                <h1 className='pb-4'>Todo List</h1>
-                <input
-                    type="text"
-                    value={newTask}
-                    onChange={(e) => setNewTask(e.target.value)}
-                    placeholder="Add a new task"
-                />
-                <button onClick={addTask}>Add Task</button>
-
-                <div className='pb-4'>
-                    {tasks.map((task, index) => (
-                        <div
-                            key={index}
-                            className={`flex space-x-4 justify-between py-2 ${task.completed ? 'text-gray-500 line-through' : 'text-black'
-                                }`}
-                            style={{ textDecoration: task.completed ? 'line-through' : 'none' }}
-                        >
-                            <span>{task.text}</span>
-                            <Timer />
-                            <button onClick={() => removeTask(index)}>Remove</button>
-                        </div>
-                    ))}
+        <div className='todo-body'>
+            <div className='todo-header'>
+                <h1>Todo List</h1>
+                <div className='todo-addtask'>
+                    <button onClick={addTask}>Add Task</button>
+                    <input
+                        type="text"
+                        value={newTask}
+                        onChange={(e) => setNewTask(e.target.value)}
+                        placeholder="Add a new task"
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                addTask();
+                            }
+                        }}
+                    />
                 </div>
+                <div className='todo-divider' />
             </div>
-            <div>
-                <h2>Completed Tasks</h2>
+            <div className='todo-tasklist'>
                 <ul>
-                    {completedTasks.map((completedTask, index) => (
+                    {tasks.map((task, index) => (
                         <li key={index}>
-                            <span>{completedTask.text}</span>
-                            {/* You can include other details or components here if needed */}
+                            <span>{task.text}</span>
+                            <button onClick={() => removeTask(index)}>X</button>
                         </li>
                     ))}
                 </ul>
