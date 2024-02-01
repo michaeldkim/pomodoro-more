@@ -3,8 +3,27 @@
 }
 
 .task-description{
+  display: flex;
+  flex-direction: column;
   padding-left: 10px;
   padding-bottom: 10px;;
+}
+
+.row1, .row2{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.attachment-indicator {
+  display: inline-block; /* Or 'flex' if you prefer */
+  margin-left: 10px; /* Adjust spacing as needed */
+  vertical-align: middle; /* Align with task text or title */
+}
+
+.attachment-indicator img {
+  width: 16px; /* Adjust size as needed */
+  height: 16px;
 }
 
 .modal-button {
@@ -12,6 +31,7 @@
     color: white;
     padding: 3px 8px;
     border-radius: 7px;
+    height: 30px;
 }
 
 /* The Modal (background) */
@@ -29,21 +49,56 @@
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: yellow;
+    border-radius: 25px;
+    background-color: white;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
   }
   
-  /* The Close Button 
+  .edit-priority, .edit-description, .edit-date, .task-attachments {
+    display: flex;
+    width: 35%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+
+  .edit-date, .edit-description {
+    flex-direction: column;
+  }
+
+  .task-attachments {
+    border: 1px solid black;
+    border-radius: 25px;
+    width: fit-content;
+    padding: 5px 15px
+  }
+
+  textarea {
+    border: 1px solid black; 
+    border-radius: 4px; 
+    padding: 5px; 
+    resize: vertical; 
+    outline: none; 
+}
+
+.save-button {
+  border: 1px solid black;
+  padding: 5px 15px;
+  border-radius: 5px;
+  background-color: green;
+  font-weight: bold;
+  color: white;
+}
+  
   .close-button {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
   }
-  
+  /* The Close Button 
   .close-button:hover,
   .close-button:focus {
     color: black;
