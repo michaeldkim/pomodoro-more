@@ -44,6 +44,10 @@ function Todo() {
         setTasks(updatedTasks);
     };
 
+    const updateTask = (updatedTask) => {
+        setTasks(tasks.map(task => task.id === updatedTask.id ? updatedTask : task));
+    };
+
     const toggleCompleted = (index) => {
         const updatedTasks = [...tasks];
         updatedTasks[index].completed = !updatedTasks[index].completed;
@@ -102,7 +106,11 @@ function Todo() {
                                 </div>
                                 {expandedTaskIndex === index && (
                                     <div className="expanded-content">
-                                        <Task taskData={task} />
+                                        <Task
+                                            key={index}
+                                            taskData={task}
+                                            updateTask={updateTask}
+                                        />
                                     </div>
                                 )}
                             </li>
