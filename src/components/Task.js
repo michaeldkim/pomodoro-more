@@ -19,10 +19,11 @@ function Task({ taskData }) {
             {isModalOpen && (
                 <div className="modal">
                     <div className="modal-content">
+                        <h3>Modal Content</h3>
                         <span onClick={closeModal} className="close-button">
                             &times;
                         </span>
-                        <h3>Modal Content</h3>
+                        
                         {/* Add your modal content here */}
                     </div>
                 </div>
