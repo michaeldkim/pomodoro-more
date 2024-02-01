@@ -7,6 +7,7 @@ function Todo() {
     const [newTask, setNewTask] = useState('');
     const [dateTime, setDateTime] = useState(new Date());
     const [expandedTaskIndex, setExpandedTaskIndex] = useState(-1);
+    const [priority, setPriority] = useState('Medium');
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -32,7 +33,7 @@ function Todo() {
     const addTask = () => {
         if (newTask.trim() !== '') {
             const capitalizedTask = newTask.charAt(0).toUpperCase() + newTask.slice(1);
-            setTasks([...tasks, { text: capitalizedTask, completed: false }]);
+            setTasks([...tasks, { text: capitalizedTask, completed: false, priority }]);
             setNewTask('');
         }
     };
@@ -53,10 +54,18 @@ function Todo() {
         setExpandedTaskIndex(index === expandedTaskIndex ? -1 : index);
     };
 
+    // Calculate the number of tasks and completed tasks
+    const totalTasks = tasks.length;
+    const completedTasks = tasks.filter((task) => task.completed).length;
+
     return (
         <div className='todo-body'>
             <div className='todo-header'>
                 <h1>{formattedDate} {formattedTime}</h1>
+                <div className='task-count'>
+                    <p>Total Tasks: {totalTasks}</p>
+                    <p>Completed Tasks: {completedTasks}</p>
+                </div>
                 <div className='todo-addtask'>
                     <button onClick={addTask}>+</button>
                     <input
@@ -70,6 +79,11 @@ function Todo() {
                             }
                         }}
                     />
+                    <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
                 </div>
                 <div className='todo-divider' />
                 <div className='todo-tasklist'>
@@ -83,11 +97,12 @@ function Todo() {
                                         onChange={() => toggleCompleted(index)}
                                     />
                                     <span onClick={() => toggleExpandTask(index)}>{task.text}</span>
+                                    <span className='task-priority'>{task.priority}</span>
                                     <button onClick={() => removeTask(index)}>X</button>
                                 </div>
                                 {expandedTaskIndex === index && (
                                     <div className="expanded-content">
-                                        <Task taskData={task}/>
+                                        <Task taskData={task} />
                                     </div>
                                 )}
                             </li>

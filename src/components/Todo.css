@@ -25,6 +25,18 @@
   margin: 0 5px;
 }
 
+.task-count{
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+  padding-bottom: 15px;
+}
+
+.task-count p{
+  font-size: 18px;
+  font-weight: 400;
+}
+
 .todo-divider {
   background-color: black;
   height: 2px;
