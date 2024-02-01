@@ -3,7 +3,10 @@ import './Task.css';
 
 function Task({ taskData }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [description, setDescription] = useState(taskData.description || ''); // Initialize with existing description if available
+    const [description, setDescription] = useState(taskData.description || '');
+    const [priority, setPriority] = useState(taskData.priority || '');
+
+    const priorityLevels = ["Low", "Medium", "High"];
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -16,7 +19,7 @@ function Task({ taskData }) {
     const saveDescription = () => {
         // Save the description to the taskData (you can update your taskData handling logic here)
         taskData.description = description;
-
+        taskData.priority = priority;
         // Close the modal
         closeModal();
     };
@@ -32,6 +35,17 @@ function Task({ taskData }) {
             {isModalOpen && (
                 <div className="modal">
                     <div className="modal-content">
+                        <h3>Edir Priority</h3>
+                        <select
+                            value={priority}
+                            onChange={(e) => setPriority(e.target.value)}
+                        >
+                            {priorityLevels.map((level) => (
+                                <option key={level} value={level}>
+                                    {level}
+                                </option>
+                            ))}
+                        </select>
                         <h3>Edit Description</h3>
                         <span onClick={closeModal} className="close-button">
                             &times;

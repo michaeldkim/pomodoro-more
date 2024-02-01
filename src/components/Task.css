@@ -1,6 +1,10 @@
 .task-content{
-    background-color: aqua;
     padding: 1vh 0.5vh;
+}
+
+.task-description{
+  padding-left: 10px;
+  padding-bottom: 10px;;
 }
 
 .modal-button {
@@ -9,6 +13,7 @@
     padding: 3px 8px;
     border-radius: 7px;
 }
+
 /* The Modal (background) */
 .modal {
     position: fixed; /* Stay in place */
